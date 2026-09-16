@@ -1,0 +1,26 @@
+# Originally
+integer_value = 30
+float_value = 15.9
+string_number_value = "67"
+
+# 1. Integer to float
+int_to_float = float(integer_value)
+
+# 2. Float to integer
+float_to_int = int(float_value)
+
+# 3. Integer to string
+int_to_string = str(integer_value)
+
+# 4. String to integer
+string_to_int = int(string_number_value)
+
+# 5. Integer to Boolean
+int_to_bool = bool(integer_value)
+
+# Print output
+print("1. Integer to Float:", int_to_float, type(int_to_float))
+print("2. Float to Integer:", float_to_int, type(float_to_int))
+print("3. Integer to String:", int_to_string, type(int_to_string))
+print("4. String to Integer:", string_to_int, type(string_to_int))
+print("5. Integer to Boolean:", int_to_bool, type(int_to_bool))

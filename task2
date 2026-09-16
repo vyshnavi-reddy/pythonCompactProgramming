@@ -1,0 +1,24 @@
+# Integer
+zahl = 10
+
+# Floating-point number
+kommazahl = 10.5
+
+# String
+text = "Hello, World!"
+
+# Boolean
+wahrheitswert = True
+
+# Output variables and their types
+print("Integer = ", zahl)
+print("Type = ", type(zahl))
+
+print("Float = ", kommazahl)
+print("Type = ", type(kommazahl))
+
+print("String = ", text)
+print("Type = ", type(text))
+
+print("Boolean = ", wahrheitswert)
+print("Type = ", type(wahrheitswert))
