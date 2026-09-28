@@ -1,0 +1,10 @@
+events = {
+    "Erkennt ihr euer Dortmunder?": "19.09.2026",
+    "Abfüllen und Etikettieren wie vor 100 Jahren": "19.09.2026",
+    "Unter der Lupe": "19.09.2026",
+    "Connected – Digitale Kultur im Ruhrgebiet": "19.09.2026",
+    "Nachts im Museum": "19.09.2026"
+}
+
+for event, date in events.items():
+    print(event, "-", date)

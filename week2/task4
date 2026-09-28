@@ -1,0 +1,5 @@
+strings = ["Hello", "World", "Python"]
+
+result = list(map(list, strings))
+
+print(result)
