@@ -1,0 +1,133 @@
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+
+# 1. Read CSV file and transfer it into DataFrame
+
+df = pd.read_csv("Cars93_missing.csv")
+
+print("DataFrame:")
+print(df)
+
+
+# 2. Transfer a Series object into the index column
+
+new_index = pd.Series(range(1, len(df) + 1))
+
+df.index = new_index
+
+print("\nDataFrame with new index:")
+print(df)
+
+
+# 3. Change data in a column according to a condition
+
+# Example: change values in the first numeric column
+column = df.select_dtypes(include="number").columns[0]
+
+df.loc[df[column] < df[column].mean(), column] = 0
+
+print("\nData after applying condition:")
+print(df)
+
+
+# 4. Get names of DataFrame columns and sum of missing values
+
+print("\nColumn names:")
+print(df.columns)
+
+print("\nNumber of missing values:")
+print(df.isnull().sum())
+
+
+# 5. Exchange two columns and sort columns by name
+
+columns = list(df.columns)
+
+# Exchange the first two columns
+columns[0], columns[1] = columns[1], columns[0]
+
+df = df[columns]
+
+# Sort columns by name
+df = df[sorted(df.columns)]
+
+print("\nColumns after exchanging and sorting:")
+print(df.columns)
+
+
+# 6. Delete upper and lower 5% from DataFrame
+
+numeric_column = df.select_dtypes(include="number").columns[0]
+
+lower_limit = df[numeric_column].quantile(0.05)
+upper_limit = df[numeric_column].quantile(0.95)
+
+df = df[
+    (df[numeric_column] >= lower_limit) &
+    (df[numeric_column] <= upper_limit)
+]
+
+print("\nDataFrame after removing lower and upper 5%:")
+print(df)
+
+
+# 7. Replace missing values in a column with average value
+
+numeric_columns = df.select_dtypes(include="number").columns
+
+for column in numeric_columns:
+    average = df[column].mean()
+    df[column] = df[column].fillna(average)
+
+print("\nDataFrame after replacing missing values:")
+print(df)
+
+
+# 8. Create two DataFrames using two dictionaries
+# Merge the two DataFrames
+
+dictionary1 = {
+    "ID": [1, 2, 3],
+    "Name": ["John", "Anna", "Mike"]
+}
+
+dictionary2 = {
+    "ID": [1, 2, 3],
+    "Marks": [85, 90, 78]
+}
+
+df1 = pd.DataFrame(dictionary1)
+df2 = pd.DataFrame(dictionary2)
+
+merged_df = pd.merge(df1, df2, on="ID")
+
+print("\nFirst DataFrame:")
+print(df1)
+
+print("\nSecond DataFrame:")
+print(df2)
+
+print("\nMerged DataFrame:")
+print(merged_df)
+
+
+# 9. Create a histogram for any column
+
+df[numeric_column].hist()
+
+plt.xlabel(numeric_column)
+plt.ylabel("Frequency")
+plt.title("Histogram")
+
+plt.show()
+
+
+# 10. Create Correlation Matrix for numeric columns
+
+correlation_matrix = df[numeric_columns].corr()
+
+print("\nCorrelation Matrix:")
+print(correlation_matrix)
+```
